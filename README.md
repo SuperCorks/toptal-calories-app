@@ -21,6 +21,7 @@ Please refer to each directory's readme for more info on installation and config
     <td><img src="https://i.imgur.com/BoSGfNc.jpg" width="200" style="display: inline" /></td>
     <td><img src="https://i.imgur.com/hIK4jzR.jpg" width="200" style="display: inline" /></td>
     <td><img src="https://i.imgur.com/1SACE30.jpg" width="200" style="display: inline" /></td>
+    <td><img src="https://i.imgur.com/A1cusGT.jpg" width="200" style="display: inline" /></td>
   </tr>
 </table>
 
