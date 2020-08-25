@@ -1,0 +1,51 @@
+# Autosave files
+*~
+
+# build
+[Oo]bj/
+[Bb]in/
+packages/
+TestResults/
+
+# globs
+Makefile.in
+*.DS_Store
+*.sln.cache
+*.suo
+*.cache
+*.pidb
+*.userprefs
+*.usertasks
+config.log
+config.make
+config.status
+aclocal.m4
+install-sh
+autom4te.cache/
+*.user
+*.tar.gz
+tarballs/
+test-results/
+.idea/
+Thumbs.db
+
+# Mac bundle stuff
+*.dmg
+#*.app
+
+# resharper
+*_Resharper.*
+*.Resharper
+
+# dotCover
+*.dotCover
+/.vs/LTEHMobile/v15/sqlite3/*.ide
+.vs
+xamarin-forms-samples-master
+/xamarin-forms-samples-master.zip
+
+# node modules
+node_modules/
+
+# fody generated files
+FodyWeavers.xsd

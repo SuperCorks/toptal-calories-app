@@ -1,0 +1,137 @@
+// Create a new session using the unsafe login or signup below.
+// Use the returned "uuid" and "user.id" to replace SESSION_UUID
+// and USER_ID in subsequent requests.
+
+// Unsafe login (replace USER_EMAIL with existing user email)
+// Seeded users:
+// fake-admin@example.com (admin)
+// fake-manager@example.com (manager)
+// fake-member@example.com (member)
+// simoncorcos.ing@gmail.com (admin)
+GET http://localhost/authentication/login/unsafe/USER_EMAIL
+
+###
+
+// Unsafe signup (replace USER_EMAIL with desired username, ideally an email)
+GET http://localhost/authentication/signup/unsafe/USER_EMAIL
+
+###
+
+// Get all meals (must be admin)
+// Replace SESSION_UUID
+GET http://localhost/meals
+auth-token: SESSION_UUID
+
+###
+
+// Get meals of a member
+// Replace SESSION_UUID
+GET http://localhost/meals?userId=USER_ID
+auth-token: SESSION_UUID
+
+###
+
+// Create a meal (must be admin or meal owner)
+// Replace SESSION_UUID, USER_ID
+POST http://localhost/meals
+auth-token: SESSION_UUID
+Content-Type: application/json
+
+{
+  "calories": 1000,
+  "name": "My new meal",
+  "time": "2020-02-02T01:00:00.000Z",
+  "userId": "USER_ID"
+}
+
+###
+
+// Update a meal (must be admin or meal owner)
+// Replace SESSION_UUID, USER_ID
+POST http://localhost/meals
+auth-token: SESSION_UUID
+Content-Type: application/json
+
+{
+  "id": "???",
+  "calories": 1000,
+  "name": "My updated meal",
+  "time": "2020-02-02T01:00:00.000Z",
+  "userId": "USER_ID"
+}
+
+###
+
+
+// Delete a meal (must be admin or meal owner)
+// Replace SESSION_UUID, MEAL_ID
+DELETE http://localhost/meals/MEAL_ID
+auth-token: SESSION_UUID
+
+###
+
+
+// Get all users (must be admin)
+// Replace SESSION_UUID
+GET http://localhost/users?roles=admin,manager,member
+auth-token: SESSION_UUID
+
+###
+
+
+// Get all members (must be an admin or manager)
+// Replace SESSION_UUID
+GET http://localhost/users?roles=member
+auth-token: SESSION_UUID
+
+###
+
+
+
+// Create an admin (must be an admin)
+// Replace SESSION_UUID
+POST http://localhost/users
+auth-token: SESSION_UUID
+Content-Type: application/json
+
+{
+  "role": "admin",
+  "username": "new-admin@example.com"
+}
+
+###
+
+
+// Create a manager (must be an admin)
+// Replace SESSION_UUID
+POST http://localhost/users
+auth-token: SESSION_UUID
+Content-Type: application/json
+
+{
+  "role": "manager",
+  "username": "new-manager@example.com"
+}
+
+###
+
+// Create a member (must be an admin or a manager)
+// Replace SESSION_UUID
+POST http://localhost/users
+auth-token: SESSION_UUID
+Content-Type: application/json
+
+{
+  "role": "member",
+  "settings": {"dailyCalories": 125},
+  "username": "new-member@example.com"
+}
+
+###
+
+// Delete a user (must be an admin or a manager)
+// Replace SESSION_UUID, USER_ID
+DELETE http://localhost/users/USER_ID
+auth-token: SESSION_UUID
+
+###

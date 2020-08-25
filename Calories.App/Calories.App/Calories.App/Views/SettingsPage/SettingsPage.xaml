@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    mc:Ignorable="d"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:Calories.App.Views.SettingsPage"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+    x:Class="Calories.App.Views.SettingsPage.SettingsPage"
+
+    Title="Settings"
+>
+    <ContentPage.BindingContext>
+        <local:SettingsPageViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="20" Margin="0, 30, 0, 0" Spacing="10">
+
+            <!-- DAILY CALORIES ENTRY -->
+            <Entry Text="{Binding DailyCalories}" Keyboard="Numeric" Placeholder="Daily Calories Limit" BackgroundColor="Transparent" />
+            
+            <!-- SAVE BUTTON -->
+            <Button 
+                    Text="Save" 
+                    Visual="Material"
+                    TextColor="White" 
+                    HeightRequest="40" 
+                    BackgroundColor="#1749D4" 
+                    IsEnabled="{Binding CanSave}" 
+                    Command="{Binding SaveCommand}" 
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

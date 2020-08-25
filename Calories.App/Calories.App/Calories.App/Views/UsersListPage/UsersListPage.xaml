@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    mc:Ignorable="d"
+    xmlns:util="clr-namespace:Calories.App.Util"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:Calories.App.Views.UsersListPage"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Sf="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    
+    x:Class="Calories.App.Views.UsersListPage.UsersListPage"
+    
+    Title="Users"
+>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="ADD" Command="{Binding AddUserCommand}" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+
+            <!-- USERS LIST -->
+            <Sf:SfListView
+                x:Name="UsersList"
+                SwipeOffset="170"
+                AllowSwiping="True"
+                GroupHeaderSize="40"
+                SwipeThreshold="150"
+                SelectionMode="None"
+                IsStickyGroupHeader="True"
+                ItemsSource="{Binding Users}"
+            >
+                <Sf:SfListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:UsersListItemModel">
+                        <ViewCell>
+                            <FlexLayout
+                                Padding="10"
+                                Direction="Row" 
+                                AlignItems="Center"
+                                BackgroundColor="White"
+                                JustifyContent="SpaceAround"
+                            >
+                                <!-- USER NAME -->
+                                <Label
+                                    TextColor="Black"
+                                    FlexLayout.Grow="1"
+                                    Text="{Binding Username}"
+                                    FontFamily="OpenSans-Regular.ttf#OpenSans-Regular"
+                                />
+
+                                <!-- USER ROLE -->
+                                <Label 
+                                    WidthRequest="80"
+                                    TextColor="Black"
+                                    Text="{Binding UserRole}" 
+                                    HorizontalTextAlignment="End"
+                                    FontFamily="OpenSans-Regular.ttf#OpenSans-Regular" 
+                                />
+                            </FlexLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </Sf:SfListView.ItemTemplate>
+
+                <!-- SWIPE AREA -->
+                <Sf:SfListView.RightSwipeTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal" Spacing="4" WidthRequest="200">
+
+                            <!-- EDIT BUTTON -->
+                            <Button 
+                                Text="Edit"
+                                Margin="2, 5"
+                                Padding="10, 5"
+                                BorderWidth="1"
+                                Visual="Default"
+                                WidthRequest="75"
+                                TextColor="#1749D4"
+                                BorderColor="#1749D4"
+                                BackgroundColor="White"
+                                Command="{Binding EditUserCommand}"
+                                HorizontalOptions="EndAndExpand" 
+                                VerticalOptions="CenterAndExpand"
+                            >
+                                <Button.Effects>
+                                    <util:NoDefaultPadding />
+                                </Button.Effects>
+                            </Button>
+
+                            <!-- DELETE BUTTON -->
+                            <Button 
+                                Text="Delete"
+                                Visual="Default"
+                                Padding="10, 5"
+                                BorderWidth="1"
+                                TextColor="#ED3D3D"
+                                Margin="2, 5, 10, 5"
+                                BorderColor="#ED3D3D"
+                                HorizontalOptions="End"
+                                BackgroundColor="Transparent"
+                                VerticalOptions="CenterAndExpand"
+                                Command="{Binding DeleteUserCommand}"
+                            >
+                                <Button.Effects>
+                                    <util:NoDefaultPadding />
+                                </Button.Effects>
+                            </Button>
+                        </StackLayout>
+                    </DataTemplate>
+                </Sf:SfListView.RightSwipeTemplate>
+            </Sf:SfListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

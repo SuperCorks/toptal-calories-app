@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    mc:Ignorable="d"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+    x:Class="Calories.App.Views.MealForm.MealFormPage"
+>
+
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <StackLayout Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0, 30, 0, 0">
+
+                <StackLayout Spacing="0">
+                    <!-- MEAL OWNER PICKER (admin only) -->
+                    <Label Text="User" FontSize="12" TextColor="#555555" Margin="8, 0" />
+                    <Picker
+                        HeightRequest="40"
+                        x:Name="UserPicker"
+                        BackgroundColor="Transparent"
+                        ItemsSource="{Binding MemberUsernames}"
+                        IsVisible="{Binding UserPickerIsVisible}" 
+                        SelectedIndex="{Binding MealUserIndex, Mode=TwoWay}"
+                    />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="20">
+
+                    <StackLayout Spacing="0">
+                        <!-- MEAL DATE PICKER -->
+                        <Label Text="Date" FontSize="12" TextColor="#555555" Margin="8, 0" />
+                        <DatePicker Date="{Binding MealDate}" Visual="Default" BackgroundColor="Transparent" />
+                    </StackLayout>
+
+                    <StackLayout Spacing="0">
+                        <!-- MEAL TIME PICKER -->
+                        <Label Text="Time" FontSize="12" TextColor="#555555" Margin="8, 0" />
+                        <TimePicker Time="{Binding MealTime}" HorizontalOptions="FillAndExpand" Visual="Default" BackgroundColor="Transparent" />
+                    </StackLayout>
+                  </StackLayout>
+
+                <!-- MEAL NAME ENTRY -->
+                <Entry Text="{Binding MealName}" Placeholder="Name" BackgroundColor="Transparent" />
+
+                <!-- CALORIES ENTRY -->
+                <Entry Text="{Binding MealCalories}" Keyboard="Numeric" Placeholder="Calories" BackgroundColor="Transparent" />
+
+                <!-- SAVE BUTTON -->
+                <Button 
+                    Text="Save" 
+                    Visual="Material"
+                    TextColor="White" 
+                    HeightRequest="40" 
+                    BackgroundColor="#1749D4" 
+                    IsEnabled="{Binding CanSave}" 
+                    Command="{Binding SaveMealCommand}" 
+                />
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Calories.App.Views.LoginPage"
+    mc:Ignorable="d"
+    x:Class="Calories.App.Views.LoginPage.LoginPage"
+    Title="Login"
+>
+    <ContentPage.BindingContext>
+        <local:LoginPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+
+        <StackLayout Padding="20" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+
+            <!-- WELCOME LABEL -->
+            <Label 
+                FontSize="Large" 
+                TextColor="#1749D4"
+                Text="Welcome to the Calories app" 
+                HorizontalOptions="CenterAndExpand" 
+            />
+
+            <!-- LOGIN BUTTON -->
+            <Button 
+                Text="Login / Sign up" 
+                TextColor="White" 
+                HeightRequest="40" 
+                BackgroundColor="#1749D4"
+                Command="{Binding LoginCommand}" 
+                HorizontalOptions="FillAndExpand" 
+                IsVisible="{Binding ShowLoginButton}" 
+            />
+
+            <!-- SPINNING WHEEL -->
+            <ActivityIndicator 
+                Color="#1749D4" 
+                IsRunning="True" 
+                IsVisible="{Binding IsLoggingIn}" 
+            />
+
+            <!-- LOGGING IN LABEL -->
+            <Label
+                FontSize="Medium" 
+                Text="Logging in..." 
+                TextColor="#1749D4"
+                IsVisible="{Binding IsLoggingIn}" 
+                HorizontalOptions="CenterAndExpand" 
+            />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

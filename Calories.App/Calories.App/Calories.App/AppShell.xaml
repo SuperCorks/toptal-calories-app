@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell
+    mc:Ignorable="d"
+    xmlns:local="clr-namespace:Calories.App"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+    x:Class="Calories.App.AppShell"
+    
+    Title="Calories"
+    Visual="Material"
+    BackgroundColor="#1749D4"
+>
+
+    <Shell.BindingContext>
+        <local:AppShellViewModel />
+    </Shell.BindingContext>
+
+    <!-- 
+        Styles and Resources 
+    -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#1749D4</Color>
+            <Style x:Key="BaseStyle" TargetType="Element" ApplyToDerivedTypes="True">
+                <Setter Property="Shell.BackgroundColor" Value="#1749D4" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="Yellow" />
+                <Setter Property="Shell.UnselectedColor" Value="Yellow" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="Yellow" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="Yellow"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+
+            <Style TargetType="ContentPage">
+                <Setter Property="Visual" Value="Material" />
+            </Style>
+
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <!-- Your Pages -->
+    <!--<FlyoutItem Title="Settings" Icon="tab_about.png">
+        <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+    </FlyoutItem>-->
+
+    <!-- FLYOUT HEADER -->
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <StackLayout Orientation="Vertical" BackgroundColor="White">
+                <ContentView Padding="40, 0" Margin="0, 40, 0, 0">
+                    <Image HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"  Source="toptal_logo.png"/>
+                </ContentView>
+                <Label HorizontalOptions="FillAndExpand" VerticalOptions="End" Text="{Binding Username}" HorizontalTextAlignment="Center" FontSize="14" TextColor="Black" Margin="0, 2" />
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <!-- Optional Templates 
+    // These may be provided inline as below or as separate classes.
+
+    // This header appears at the top of the Flyout.
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid>ContentHere</Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    // ItemTemplate is for ShellItems as displayed in a Flyout
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Title, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    // MenuItemTemplate is for MenuItems as displayed in a Flyout
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Text, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    -->
+
+</Shell>

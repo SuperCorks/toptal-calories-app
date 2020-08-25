@@ -1,0 +1,56 @@
+# No log files
+*.log
+
+# npm logs
+npm-debug.log*
+
+# ffmpeg logs
+/ffmpeg2pass-0.log
+/ffmpeg2pass-0.log.mbtree
+
+# emacs buffers
+*~
+
+# node modules
+# No log files
+*.log
+
+# npm logs
+npm-debug.log*
+
+# ffmpeg logs
+/ffmpeg2pass-0.log
+/ffmpeg2pass-0.log.mbtree
+
+# emacs buffers
+*~
+
+# node modules
+node_modules/
+
+# cache files
+Animations.cache
+
+# IDE related stuff
+.projectile
+.tern-port
+.idea
+.vscode
+*.sw[p]
+
+# Bower
+bower_components/
+
+# project files
+install.log.json
+
+# file-server files
+/files/
+
+# uploads
+/tmp/uploads/
+
+# sql dumps
+/sql/dump*
+/sql/Dump*
+*.dump.sql

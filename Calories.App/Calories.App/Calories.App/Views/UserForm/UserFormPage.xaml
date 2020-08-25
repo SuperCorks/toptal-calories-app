@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    mc:Ignorable="d"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sf="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    x:Class="Calories.App.Views.UserForm.UserFormPage"
+>
+    <ContentPage.Content>
+        <StackLayout Spacing="0" Padding="20, 50, 20, 20" HorizontalOptions="FillAndExpand">
+
+            <!-- USER NAME -->
+            <Entry Text="{Binding Username}" Placeholder="Username (email)" BackgroundColor="Transparent" />
+
+            <!-- USER ROLE -->
+            <sf:SfRadioGroup IsVisible="{Binding ShowUserRolePicker}" Margin="0, 20">
+                <sf:SfRadioButton Text="Member" IsChecked="{Binding IsMember}" />
+                <sf:SfRadioButton Text="Manager" IsChecked="{Binding IsManager}" />
+                <sf:SfRadioButton Text="Admin" IsChecked="{Binding IsAdmin}" />
+            </sf:SfRadioGroup>
+
+            <!-- SAVE BUTTON -->
+            <Button 
+                Text="Save" 
+                Visual="Material" 
+                TextColor="White" 
+                HeightRequest="40" 
+                BackgroundColor="#1749D4" 
+                IsEnabled="{Binding CanSave}" 
+                Command="{Binding SaveUserCommand}" 
+            />
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

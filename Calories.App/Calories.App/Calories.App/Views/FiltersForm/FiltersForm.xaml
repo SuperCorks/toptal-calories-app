@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Calories.App.Views.FiltersForm"
+    xmlns:util="clr-namespace:Calories.App.Util"
+    xmlns:views="clr-namespace:Calories.App.Views"
+    mc:Ignorable="d"
+    x:Class="Calories.App.Views.FiltersForm.FiltersForm"
+>
+    <ContentView.BindingContext>
+        <local:FilterFormViewModel />
+    </ContentView.BindingContext>
+    
+    <ContentView.Content>
+        <StackLayout Padding="8">
+
+            <StackLayout Visual="Default">
+
+                <!-- TOP ROW (date) -->
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" HorizontalOptions="CenterAndExpand">
+
+                    <!-- DATE FROM -->
+                    <StackLayout Orientation="Vertical" FlexLayout.Grow="1" Margin="5">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Date from" HorizontalOptions="StartAndExpand" />
+                            <Button Text="Clear" Command="{Binding ResetFilterDateFromCommand}" BackgroundColor="Transparent" FontSize="12" TextColor="#1749D4">
+                                <Button.Effects>
+                                    <util:NoDefaultPadding />
+                                </Button.Effects>
+                            </Button>
+                        </StackLayout>
+                        <views:NullableDatePicker NullableDate="{Binding FilterDateFrom}" />
+                    </StackLayout>
+
+                    <!-- DATE TO -->
+                    <StackLayout Orientation="Vertical" FlexLayout.Grow="1" Margin="5">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Date To" HorizontalOptions="StartAndExpand" />
+                            <Button Text="Clear" Command="{Binding ResetFilterDateToCommand}" BackgroundColor="Transparent" FontSize="12" TextColor="#1749D4">
+                                <Button.Effects>
+                                    <util:NoDefaultPadding />
+                                </Button.Effects>
+                            </Button>
+                        </StackLayout>
+                        <views:NullableDatePicker NullableDate="{Binding FilterDateTo}" />
+                    </StackLayout>
+                </FlexLayout>
+
+                <!-- BOTTOM ROW (time) -->
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" HorizontalOptions="CenterAndExpand">
+
+                    <!-- TIME FROM -->
+                    <StackLayout Orientation="Vertical" FlexLayout.Grow="1" Margin="5">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Time from" HorizontalOptions="StartAndExpand" />
+                            <Button Text="Clear" Command="{Binding ResetFilterTimeFromCommand}" BackgroundColor="Transparent" FontSize="12" TextColor="#1749D4">
+                                <Button.Effects>
+                                    <util:NoDefaultPadding />
+                                </Button.Effects>
+                            </Button>
+                        </StackLayout>
+                        <views:NullableTimePicker NullableTime="{Binding FilterTimeFrom}" />
+                    </StackLayout>
+
+                    <!-- TIME TO -->
+                    <StackLayout Orientation="Vertical" FlexLayout.Grow="1" Margin="5">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Time To" HorizontalOptions="StartAndExpand" />
+                            <Button Text="Clear" Command="{Binding ResetFilterTimeToCommand}" BackgroundColor="Transparent" FontSize="12" TextColor="#1749D4">
+                                <Button.Effects>
+                                    <util:NoDefaultPadding />
+                                </Button.Effects>
+                            </Button>
+                        </StackLayout>
+                        <views:NullableTimePicker NullableTime="{Binding FilterTimeTo}" />
+                    </StackLayout>
+                </FlexLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    mc:Ignorable="d"
+    xmlns:util="clr-namespace:Calories.App.Util"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:Calories.App.Views.MealsListPage"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Sf="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+
+    x:Class="Calories.App.Views.MealsListPage.MealsListPage"
+
+    Title="Meals"
+>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Filter" IconImageSource="search.png" Command="{Binding ShowFiltersPopupCommand}" />
+        <ToolbarItem Text="Add" Command="{Binding AddMealCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <!-- MEALS LIST -->
+            <Sf:SfListView
+                x:Name="MealsList"
+                SwipeOffset="176"
+                AllowSwiping="True"
+                GroupHeaderSize="35"
+                SwipeThreshold="150"
+                SelectionMode="None"
+                IsStickyGroupHeader="True"
+                ItemsSource="{Binding Meals}"
+                SelectionBackgroundColor="White"
+            >
+                <Sf:SfListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:MealListItemModel">
+                        <ViewCell>
+                            <FlexLayout
+                                Padding="10"
+                                Direction="Row" 
+                                AlignItems="Center"
+                                JustifyContent="SpaceAround"
+                                BackgroundColor="White"
+                            >
+                                <StackLayout Orientation="Horizontal" WidthRequest="55" Spacing="2" Margin="5,0,15,0">
+                                    <!-- AM/PM -->
+                                    <Label
+                                        Text="{Binding MealTimePeriod}" 
+                                        FontSize="Micro"
+                                        VerticalTextAlignment="Center" 
+                                        TextColor="{Binding Color}"
+                                        FontFamily="OpenSans-Regular.ttf#OpenSans-Regular"
+                                    />
+
+                                    <!-- MEAL TIME (of day) -->
+                                    <Label
+                                        Text="{Binding MealTimeText}"
+                                        HorizontalOptions="FillAndExpand" 
+                                        TextColor="{Binding Color}" 
+                                        FontFamily="OpenSans-Regular.ttf#OpenSans-Regular"
+                                    />
+                                </StackLayout>
+                                
+                                <!-- MEAL NAME -->
+                                <Label
+                                    Text="{Binding Meal.Name}"
+                                    FlexLayout.Grow="1"
+                                    TextColor="{Binding Color}" 
+                                    FontFamily="OpenSans-Regular.ttf#OpenSans-Regular"
+                                />
+                                
+                                <!-- NUMBER OF CALORIES -->
+                                <Label 
+                                    Text="{Binding CaloriesLabelText}" 
+                                    HorizontalTextAlignment="End"
+                                    WidthRequest="100" 
+                                    TextColor="{Binding Color}" 
+                                    FontFamily="OpenSans-Regular.ttf#OpenSans-Regular" 
+                                />
+                            </FlexLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </Sf:SfListView.ItemTemplate>
+
+                <!-- SWIPE AREA -->
+                <Sf:SfListView.RightSwipeTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal" Spacing="4" BackgroundColor="WhiteSmoke">
+
+                            <!-- EDIT BUTTON -->
+                            <Button 
+                                Text="Edit"
+                                Margin="2, 5"
+                                Padding="10, 5"
+                                BorderWidth="1"
+                                Visual="Default"
+                                WidthRequest="75"
+                                TextColor="#1749D4"
+                                BorderColor="#1749D4"
+                                BackgroundColor="White"
+                                Command="{Binding EditCommand}"
+                                HorizontalOptions="EndAndExpand" 
+                                VerticalOptions="CenterAndExpand"
+                            >
+                                <Button.Effects>
+                                    <util:NoDefaultPadding />
+                                </Button.Effects>
+                            </Button>
+
+                            <!-- DELETE BUTTON -->
+                            <Button 
+                                Text="Delete"
+                                Visual="Default"
+                                Padding="10, 5"
+                                BorderWidth="1"
+                                TextColor="#ED3D3D"
+                                Margin="2, 5, 10, 5"
+                                BorderColor="#ED3D3D"
+                                HorizontalOptions="End"
+                                BackgroundColor="Transparent"
+                                VerticalOptions="CenterAndExpand"
+                                Command="{Binding DeleteCommand}"
+                            >
+                                <Button.Effects>
+                                    <util:NoDefaultPadding />
+                                </Button.Effects>
+                            </Button>
+                        </StackLayout>
+                    </DataTemplate>
+                </Sf:SfListView.RightSwipeTemplate>
+
+                <!-- GROUP HEADER (Day of the day) -->
+                <Sf:SfListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                Padding="10, 5" 
+                                BackgroundColor="WhiteSmoke"
+                            >
+                                <!-- MEAL DATE -->
+                                <Label 
+                                    FontFamily="OpenSans-Regular.ttf#OpenSans-Regular"
+                                    TextColor="{Binding Items, Converter={Static local:MealsListPage.GroupColorConverter}}"
+                                    FontSize="{Binding Key, Converter={Static local:MealsListPage.GroupHeaderFontConverter}}"
+                                    Text="{Binding Key}"
+                                    VerticalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </Sf:SfListView.GroupHeaderTemplate>
+            </Sf:SfListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
